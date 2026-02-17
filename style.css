@@ -1,0 +1,252 @@
+/* =========================
+   Intel Timeline - FINAL CSS
+   ========================= */
+
+/* ---- Reset / Base ---- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+:root{
+  --intel-900:#003a8c;
+  --intel-700:#0068b5;
+  --intel-500:#00a0df;
+
+  --page:#f4f7fb;
+  --card:#ffffff;
+  --text:#0b1220;
+  --muted:#526174;
+
+  --radius:18px;
+  --shadow: 0 12px 30px rgba(0,20,60,.14);
+  --shadow-soft: 0 8px 18px rgba(0,20,60,.10);
+}
+
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--page);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* ---- Hero ---- */
+header{
+  min-height: 48vh;
+  display: grid;
+  place-items: center;
+  padding: 56px 18px 64px;
+  text-align: center;
+  color: #fff;
+
+  background:
+    radial-gradient(1200px 600px at 20% 15%, rgba(0,160,223,.55), transparent 60%),
+    radial-gradient(900px 500px at 80% 20%, rgba(0,104,181,.55), transparent 55%),
+    linear-gradient(180deg, var(--intel-700), var(--intel-900));
+}
+
+header > div{ width: min(920px, 100%); }
+
+header img{
+  width: 96px;
+  height: auto;
+  margin-bottom: 18px;
+  filter: drop-shadow(0 10px 25px rgba(0,0,0,.25));
+}
+
+header h1{
+  margin: 0 0 14px;
+  font-size: clamp(2rem, 3.5vw, 3.1rem);
+  letter-spacing: .02em;
+  text-transform: uppercase;
+}
+
+header p{
+  margin: 0 auto;
+  max-width: 62ch;
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  color: rgba(255,255,255,.92);
+}
+
+/* =========================
+   TIMELINE (horizontal)
+   ========================= */
+.timeline{
+  width: min(1100px, 100%);
+  margin: 0 auto;
+  margin-bottom: 60px;
+  padding: 34px 18px 22px;
+
+  display: flex;
+  gap: 18px;
+
+  overflow-x: auto;
+  overflow-y: visible;
+  scrollbar-gutter: stable;
+
+  scroll-snap-type: x mandatory;
+  scroll-padding: 18px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.timeline::-webkit-scrollbar{ height: 10px; }
+.timeline::-webkit-scrollbar-thumb{
+  background: rgba(0,58,140,.35);
+  border-radius: 999px;
+}
+.timeline::-webkit-scrollbar-track{
+  background: rgba(255,255,255,.7);
+  border-radius: 999px;
+}
+
+.timeline > div{
+  flex: 0 0 320px;
+  background: var(--card);
+  border-radius: var(--radius);
+  border: 1px solid rgba(0,58,140,.10);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+  position: relative;
+
+  scroll-snap-align: start;
+
+  /* no hover motion */
+  transform: none;
+  transition: none;
+}
+
+.timeline > div::before{
+  content:"";
+  position:absolute;
+  left:0; top:0;
+  width:6px; height:100%;
+  background: linear-gradient(180deg, var(--intel-500), var(--intel-900));
+  opacity:.9;
+}
+
+.timeline > div h2{
+  margin: 16px 16px 0;
+  font-size: 1.6rem;
+  color: var(--intel-900);
+  letter-spacing: .01em;
+}
+
+.timeline > div h3{
+  margin: 6px 16px 12px;
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+.timeline > div > img{
+  display: block;
+  width: 100%;
+  height: 165px;
+  object-fit: cover;
+  border-top: 1px solid rgba(0,58,140,.10);
+  border-bottom: 1px solid rgba(0,58,140,.10);
+}
+
+.timeline > div p{
+  margin: 0;
+  padding: 14px 16px 18px;
+  color: var(--muted);
+  font-size: .98rem;
+}
+
+/* =========================
+   FEATURES (3 cards row)
+   ========================= */
+.features{
+  width: min(1100px, 100%);
+  margin: 0 auto;
+  padding: 10px 18px 34px;
+}
+
+.features-wrap{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.feature-card{
+  background: var(--card);
+  border-radius: var(--radius);
+  border: 1px solid rgba(0,58,140,.10);
+  box-shadow: var(--shadow-soft);
+  padding: 18px;
+}
+
+.feature-card h2{
+  margin: 0 0 10px;
+  font-size: 1.25rem;
+  color: var(--intel-900);
+}
+
+.feature-card p{
+  margin: 0 0 14px;
+  color: var(--muted);
+}
+
+.feature-card a{
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+
+  background: rgba(0,104,181,.12);
+  color: var(--intel-900);
+  border: 1px solid rgba(0,104,181,.20);
+}
+
+/* =========================
+   SUBSCRIBE (simple + clean)
+   ========================= */
+
+.subscribe{
+  width: min(1100px, 100%);
+  margin: 0 auto;
+  padding: 40px 18px 70px;
+  text-align: center;
+}
+
+.subscribe h2{
+  margin-bottom: 20px;
+  font-size: 1.3rem;
+  color: var(--intel-900);
+}
+
+.subscribe-form{
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.subscribe-input{
+  flex: 1;
+  height: 44px;
+  padding: 0 14px;
+  border: 1px solid rgba(0,0,0,.2);
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+
+.subscribe-btn{
+  height: 44px;
+  padding: 0 22px;
+  border: none;
+  border-radius: 4px;
+  background: var(--intel-700);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* mobile */
+@media (max-width: 640px){
+  .subscribe-form{
+    flex-direction: column;
+  }
+}
