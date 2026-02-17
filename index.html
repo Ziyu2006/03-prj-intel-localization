@@ -74,7 +74,7 @@
     <div>
       <h2>2006</h2>
       <h3>Peak GHG Emissions</h3>
-      <img src="https://placehold.co/600x400" alt="Graphic representing peak greenhouse gas emissions (2006)" />
+      <img src="img/5.jpg" alt="Graphic representing peak greenhouse gas emissions (2006)" />
       <p>
         This year marks Intel's highest annual greenhouse gas emissions. 
         Subsequent investments in renewable energy and efficiency reversed this trend.
@@ -84,7 +84,7 @@
     <div>
       <h2>2020</h2>
       <h3>RISE Strategy</h3>
-      <img src="https://placehold.co/600x400" alt="RISE sustainability strategy launch (2020)" />
+      <img src="img/6.jpg" alt="RISE sustainability strategy launch (2020)" />
       <p>
         Intel launches its RISE strategy, driving industry-wide progress 
         in climate action, water stewardship, and waste reduction.
@@ -94,7 +94,7 @@
     <div>
       <h2>2022</h2>
       <h3>Net-Zero by 2040</h3>
-      <img src="https://placehold.co/600x400" alt="Net-zero commitment announcement (2022)" />
+      <img src="img/7.jpg" alt="Net-zero commitment announcement (2022)" />
       <p>
         Intel commits to achieving net-zero greenhouse gas emissions 
         (Scope 1 and 2) across global operations by 2040.
@@ -104,7 +104,7 @@
     <div>
       <h2>2023</h2>
       <h3>Renewable Electricity</h3>
-      <img src="https://placehold.co/600x400" alt="Renewable electricity milestone (2023)" />
+      <img src="img/8.jpg" alt="Renewable electricity milestone (2023)" />
       <p>
         Intel achieves 99% renewable electricity usage worldwide, 
         significantly reducing operational carbon emissions.
@@ -114,7 +114,7 @@
     <div>
       <h2>2024</h2>
       <h3>Sustainability Summit</h3>
-      <img src="https://placehold.co/600x400" alt="Intel Sustainability Summit (2024)" />
+      <img src="img/9.jpg" alt="Intel Sustainability Summit (2024)" />
       <p>
         Intel hosts its first Sustainability Summit, uniting leaders 
         to advance sustainable semiconductor manufacturing.
@@ -154,6 +154,46 @@
         <a href="#" aria-label="Learn more about Intel water and waste programs">Learn More</a>
       </div>
 
+      </div>
+    </section>
+
+    <section class="py-5">
+    <div class="container">
+      <h2 class="mb-3 text-center">Learn More</h2>
+
+      <div class="accordion" id="intelAccordion">
+        <div class="accordion-item">
+          <h3 class="accordion-header" id="q1">
+            <button class="accordion-button" type="button"
+              data-bs-toggle="collapse" data-bs-target="#a1"
+              aria-expanded="true" aria-controls="a1">
+              What is the RISE strategy?
+            </button>
+          </h3>
+          <div id="a1" class="accordion-collapse collapse show"
+            aria-labelledby="q1" data-bs-parent="#intelAccordion">
+            <div class="accordion-body">
+              RISE stands for Responsible, Inclusive, Sustainable, Enabling—guiding Intel’s 2030 goals.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h3 class="accordion-header" id="q2">
+            <button class="accordion-button collapsed" type="button"
+              data-bs-toggle="collapse" data-bs-target="#a2"
+              aria-expanded="false" aria-controls="a2">
+              What does net-zero by 2040 mean?
+            </button>
+          </h3>
+          <div id="a2" class="accordion-collapse collapse"
+            aria-labelledby="q2" data-bs-parent="#intelAccordion">
+            <div class="accordion-body">
+              It refers to reducing Scope 1 &amp; 2 operational emissions and addressing remaining emissions.
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -227,6 +267,42 @@
 
   <!-- Bootstrap JS (required for Bootstrap components if added later) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    const RTL_LANGS = new Set(["ar","fa","he","ur"]);
+
+    function hasRTLChars(text){
+      return /[\u0591-\u07FF\uFB1D-\uFDFD\uFE70-\uFEFC]/.test(text);
+    }
+
+    function applyDir(dir){
+      document.documentElement.setAttribute("dir", dir);
+
+      // Keep emails/URLs readable in RTL
+      document.querySelectorAll('input[type="email"], input[type="url"]').forEach(el=>{
+        el.setAttribute("dir","ltr");
+      });
+    }
+
+    function detectDir(){
+      const lang = (document.documentElement.getAttribute("lang") || "").toLowerCase();
+      const base = lang.split("-")[0];
+
+      if (base && RTL_LANGS.has(base)) return "rtl";
+
+      const sample = (document.body.innerText || "").slice(0, 2500);
+      return hasRTLChars(sample) ? "rtl" : "ltr";
+    }
+
+    function updateDir(){ applyDir(detectDir()); }
+
+    updateDir();
+
+    const obs = new MutationObserver(()=>requestAnimationFrame(updateDir));
+    obs.observe(document.documentElement, {
+      attributes:true, subtree:true, childList:true, characterData:true
+    });
+  </script>
 
 </body>
 </html>

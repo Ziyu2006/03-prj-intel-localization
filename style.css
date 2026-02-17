@@ -2,10 +2,18 @@
    Intel Timeline - FINAL CSS
    ========================= */
 
+html[dir="rtl"] body { direction: rtl; }
+html[dir="rtl"] .timeline { direction: rtl; }  /* helps some browsers with horizontal flow */
+
 /* ---- Reset / Base ---- */
 *,
 *::before,
 *::after { box-sizing: border-box; }
+
+:focus-visible{
+  outline: 3px solid rgba(0,160,223,.6);
+  outline-offset: 2px;
+}
 
 :root{
   --intel-900:#003a8c;
